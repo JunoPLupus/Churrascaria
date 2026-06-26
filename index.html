@@ -16,12 +16,9 @@
   <link rel="stylesheet" href="./styles/main.css">
 
   <script src="./js/support.js"></script>
-  <script type="module" src="./js/image-slot/index.js"></script>
 </head>
 <body>
 <x-dc>
-<x-import component-from-global-scope="image-slot"></x-import>
-
 <!-- ========== HOME ========== -->
 <sc-if value="{{ showHome }}" hint-placeholder-val="{{ true }}">
 
@@ -164,7 +161,7 @@
         <sc-if value="{{ isMarmitaTab }}" hint-placeholder-val="{{ true }}">
           <article class="card-marmita" aria-label="Marmitex Padrão">
             <div class="card-marmita-foto">
-              <img src="images/image-marmita.png" alt="Marmitex Temperus Churrascaria">
+              <img src="images/cardapio/marmita/marmita-padrao.png" alt="Marmitex Temperus Churrascaria">
               <div class="card-marmita-foto-overlay" aria-hidden="true"></div>
             </div>
             <div class="card-marmita-info">
@@ -212,7 +209,7 @@
         <sc-if value="{{ isBebidasTab }}" hint-placeholder-val="{{ false }}">
           <div class="grid-bebidas" role="list">
             <article class="card-produto" role="listitem">
-              <image-slot id="bev-coca" style="width:100%;height:140px" shape="rect" placeholder="Foto Coca-Cola"></image-slot>
+              <img id="bev-coca" src="images/cardapio/bebidas/coca-cola.webp" class="card-img-top" shape="rect" alt="Foto de lata de 350ml de Coca-Cola">
               <div class="card-produto-corpo">
                 <p class="produto-nome">Coca-Cola</p>
                 <p class="produto-desc">Lata 300ml</p>
@@ -220,7 +217,7 @@
               </div>
             </article>
             <article class="card-produto" role="listitem">
-              <image-slot id="bev-fanta" style="width:100%;height:140px" shape="rect" placeholder="Foto Fanta Laranja"></image-slot>
+              <img id="bev-fanta" src="images/cardapio/bebidas/fanta-laranja.webp" class="card-img-top" shape="rect" alt="Foto de lata de 350ml de Fanta Laranja">
               <div class="card-produto-corpo">
                 <p class="produto-nome">Fanta Laranja</p>
                 <p class="produto-desc">Lata 350ml</p>
@@ -228,7 +225,7 @@
               </div>
             </article>
             <article class="card-produto" role="listitem">
-              <image-slot id="bev-guarana" style="width:100%;height:140px" shape="rect" placeholder="Foto Guaraná"></image-slot>
+              <img id="bev-guarana" src="images/cardapio/bebidas/guarana.webp" class="card-img-top" shape="rect" alt="Foto de lata de 350ml de Guaraná Antarctica">
               <div class="card-produto-corpo">
                 <p class="produto-nome">Guaraná Antarctica</p>
                 <p class="produto-desc">Lata 350ml</p>
@@ -236,7 +233,7 @@
               </div>
             </article>
             <article class="card-produto" role="listitem">
-              <image-slot id="bev-sprite" style="width:100%;height:140px" shape="rect" placeholder="Foto Sprite"></image-slot>
+              <img id="bev-sprite" src="images/cardapio/bebidas/sprite.webp" class="card-img-top" shape="rect" alt="Foto de lata de 310ml de Sprite">
               <div class="card-produto-corpo">
                 <p class="produto-nome">Sprite</p>
                 <p class="produto-desc">Lata 310ml</p>
@@ -244,7 +241,7 @@
               </div>
             </article>
             <article class="card-produto" role="listitem">
-              <image-slot id="bev-agua-s" style="width:100%;height:140px" shape="rect" placeholder="Foto Água Sem Gás"></image-slot>
+              <img id="bev-agua-s" src="images/cardapio/bebidas/agua-sem-gas.jpg" class="card-img-top" shape="rect" alt="Foto de garrafa de água sem gás">
               <div class="card-produto-corpo">
                 <p class="produto-nome">Água Sem Gás</p>
                 <p class="produto-desc">Crystal 500ml</p>
@@ -252,7 +249,7 @@
               </div>
             </article>
             <article class="card-produto" role="listitem">
-              <image-slot id="bev-agua-c" style="width:100%;height:140px" shape="rect" placeholder="Foto Água Com Gás"></image-slot>
+              <img id="bev-agua-c" src="images/cardapio/bebidas/agua-com-gas.webp" class="card-img-top" shape="rect" alt="Foto de garrafa de água com gás">
               <div class="card-produto-corpo">
                 <p class="produto-nome">Água Com Gás</p>
                 <p class="produto-desc">Crystal 500ml</p>
@@ -265,15 +262,8 @@
         <!-- Sucos -->
         <sc-if value="{{ isSucosTab }}" hint-placeholder-val="{{ false }}">
           <div class="grid-bebidas" role="list">
-            <article class="card">
-              <image-slot id="juice-laranja" class="card-img-top" shape="rect" placeholder="Foto Laranja"></image-slot>
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-            </article>
             <article class="card-produto" role="listitem">
-              <image-slot id="juice-laranja" style="width:100%;height:110px" shape="rect" placeholder="Foto Laranja"></image-slot>
+              <img id="juice-laranja" src="images/cardapio/sucos/suco-laranja.png" class="card-img-top" shape="rect" alt="Foto de garrafa com suco de laranja">
               <div class="card-produto-corpo">
                 <p class="produto-nome">Laranja</p>
                 <p class="produto-desc">Garrafa 500ml</p>
@@ -281,94 +271,70 @@
               </div>
             </article>
             <article class="card-produto" role="listitem">
-              <image-slot id="bev-fanta" style="width:100%;height:140px" shape="rect" placeholder="Foto Fanta Laranja"></image-slot>
+              <img id="juice-maracuja" src="images/cardapio/sucos/suco-maracuja.jpg" class="card-img-top" shape="rect" alt="Foto de garrafa com suco de maracujá">
               <div class="card-produto-corpo">
-                <p class="produto-nome">Fanta Laranja</p>
-                <p class="produto-desc">Lata 350ml</p>
-                <p class="produto-preco">R$ 9,00</p>
+                <p class="produto-nome">Maracujá</p>
+                <p class="produto-desc">Garrafa 500ml</p>
+                <p class="produto-preco">R$ 18,00</p>
               </div>
             </article>
             <article class="card-produto" role="listitem">
-              <image-slot id="bev-guarana" style="width:100%;height:140px" shape="rect" placeholder="Foto Guaraná"></image-slot>
+              <img id="juice-goiaba" src="images/cardapio/sucos/sucos.jpg" class="card-img-top" shape="rect" alt="Foto de garrafas com suco">
               <div class="card-produto-corpo">
-                <p class="produto-nome">Guaraná Antarctica</p>
-                <p class="produto-desc">Lata 350ml</p>
-                <p class="produto-preco">R$ 9,00</p>
+                <p class="produto-nome">Goiaba</p>
+                <p class="produto-desc">Garrafa 500ml</p>
+                <p class="produto-preco">R$ 18,00</p>
               </div>
             </article>
             <article class="card-produto" role="listitem">
-              <image-slot id="bev-sprite" style="width:100%;height:140px" shape="rect" placeholder="Foto Sprite"></image-slot>
+              <img id="juice-caju" src="images/cardapio/sucos/sucos.jpg" class="card-img-top" shape="rect" alt="Foto de garrafas com suco">
               <div class="card-produto-corpo">
-                <p class="produto-nome">Sprite</p>
-                <p class="produto-desc">Lata 310ml</p>
-                <p class="produto-preco">R$ 9,00</p>
+                <p class="produto-nome">Caju</p>
+                <p class="produto-desc">Garrafa 500ml</p>
+                <p class="produto-preco">R$ 18,00</p>
               </div>
             </article>
             <article class="card-produto" role="listitem">
-              <image-slot id="bev-agua-s" style="width:100%;height:140px" shape="rect" placeholder="Foto Água Sem Gás"></image-slot>
+              <img id="juice-caja" src="images/cardapio/sucos/sucos.jpg" class="card-img-top" shape="rect" alt="Foto de garrafas com suco">
               <div class="card-produto-corpo">
-                <p class="produto-nome">Água Sem Gás</p>
-                <p class="produto-desc">Crystal 500ml</p>
-                <p class="produto-preco">R$ 7,00</p>
+                <p class="produto-nome">Cajá</p>
+                <p class="produto-desc">Garrafa 500ml</p>
+                <p class="produto-preco">R$ 18,00</p>
               </div>
             </article>
             <article class="card-produto" role="listitem">
-              <image-slot id="bev-agua-c" style="width:100%;height:140px" shape="rect" placeholder="Foto Água Com Gás"></image-slot>
+              <img id="juice-limao" src="images/cardapio/sucos/sucos.jpg" class="card-img-top" shape="rect" alt="Foto de garrafas com suco">
               <div class="card-produto-corpo">
-                <p class="produto-nome">Água Com Gás</p>
-                <p class="produto-desc">Crystal 500ml</p>
-                <p class="produto-preco">R$ 7,00</p>
+                <p class="produto-nome">Limão</p>
+                <p class="produto-desc">Garrafa 500ml</p>
+                <p class="produto-preco">R$ 18,00</p>
               </div>
             </article>
+            <article class="card-produto" role="listitem">
+              <img id="juice-manga" src="images/cardapio/sucos/sucos.jpg" class="card-img-top" shape="rect" alt="Foto de garrafas com suco">
+              <div class="card-produto-corpo">
+                <p class="produto-nome">Manga</p>
+                <p class="produto-desc">Garrafa 500ml</p>
+                <p class="produto-preco">R$ 18,00</p>
+              </div>
+            </article>
+            <article class="card-produto" role="listitem">
+              <img id="juice-abacaxi" src="images/cardapio/sucos/sucos.jpg" class="card-img-top" shape="rect" alt="Foto de garrafas com suco">
+              <div class="card-produto-corpo">
+                <p class="produto-nome">Abacaxi</p>
+                <p class="produto-desc">Garrafa 500ml</p>
+                <p class="produto-preco">R$ 18,00</p>
+              </div>
+            </article>
+          </div>
+          <div class="text-center mt-4">
+            <button onClick="{{ goPedido }}" class="btn-pedir">
+              <i class="bi bi-bag-fill" aria-hidden="true"></i>
+              Pedir Agora
+            </button>
           </div>
         </sc-if>
 
-        <!-- Sucos -->
-        <sc-if value="{{ isSucosTab }}" hint-placeholder-val="{{ false }}">
-          <div>
-            <p class="nota-suco">500ml · R$ 18,00 cada</p>
-            <div class="grid-sucos" role="list">
-              <article class="card-produto" role="listitem">
-                <image-slot id="juice-laranja" style="width:100%;height:110px" shape="rect" placeholder="Foto Laranja"></image-slot>
-                <div class="card-produto-corpo"><p class="card-suco-nome">Laranja</p></div>
-              </article>
-              <article class="card-produto" role="listitem">
-                <image-slot id="juice-maracuja" style="width:100%;height:110px" shape="rect" placeholder="Foto Maracujá"></image-slot>
-                <div class="card-produto-corpo"><p class="card-suco-nome">Maracujá</p></div>
-              </article>
-              <article class="card-produto" role="listitem">
-                <image-slot id="juice-goiaba" style="width:100%;height:110px" shape="rect" placeholder="Foto Goiaba"></image-slot>
-                <div class="card-produto-corpo"><p class="card-suco-nome">Goiaba</p></div>
-              </article>
-              <article class="card-produto" role="listitem">
-                <image-slot id="juice-caju" style="width:100%;height:110px" shape="rect" placeholder="Foto Caju"></image-slot>
-                <div class="card-produto-corpo"><p class="card-suco-nome">Caju</p></div>
-              </article>
-              <article class="card-produto" role="listitem">
-                <image-slot id="juice-caja" style="width:100%;height:110px" shape="rect" placeholder="Foto Cajá"></image-slot>
-                <div class="card-produto-corpo"><p class="card-suco-nome">Cajá</p></div>
-              </article>
-              <article class="card-produto" role="listitem">
-                <image-slot id="juice-limao" style="width:100%;height:110px" shape="rect" placeholder="Foto Limão"></image-slot>
-                <div class="card-produto-corpo"><p class="card-suco-nome">Limão</p></div>
-              </article>
-              <article class="card-produto" role="listitem">
-                <image-slot id="juice-manga" style="width:100%;height:110px" shape="rect" placeholder="Foto Manga"></image-slot>
-                <div class="card-produto-corpo"><p class="card-suco-nome">Manga</p></div>
-              </article>
-              <article class="card-produto" role="listitem">
-                <image-slot id="juice-abacaxi" style="width:100%;height:110px" shape="rect" placeholder="Foto Abacaxi"></image-slot>
-                <div class="card-produto-corpo"><p class="card-suco-nome">Abacaxi</p></div>
-              </article>
-            </div>
-            <div class="text-center mt-4">
-              <button onClick="{{ goPedido }}" class="btn-pedir">
-                <i class="bi bi-bag-fill" aria-hidden="true"></i>
-                Pedir Agora
-              </button>
-            </div>
-          </div>
-        </sc-if>
       </div>
     </section>
 

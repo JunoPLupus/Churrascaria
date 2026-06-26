@@ -325,7 +325,7 @@ input::placeholder { color: var(--c-text-dark); }
 .hero-fundo {
   position: absolute;
   inset: 0;
-  background-image: url('../images/image-marmita.png');
+  background-image: url('../images/cardapio/marmita/marmita-padrao.png');
   background-size: cover;
   background-position: center top;
 }
