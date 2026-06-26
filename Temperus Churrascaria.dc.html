@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap">
+  <!-- Estilos customizados -->
+  <link rel="stylesheet" href="./styles/main.css">
+
+  <script src="./js/support.js"></script>
+  <script type="module" src="./js/image-slot/index.js"></script>
+</head>
+<body>
+<x-dc>
+<x-import component-from-global-scope="image-slot"></x-import>
+
+<!-- ========== HOME ========== -->
+<sc-if value="{{ showHome }}" hint-placeholder-val="{{ true }}">
+
+  <nav class="navbar-site" role="navigation" aria-label="Navegação principal">
+    <div class="navbar-inner">
+      <a href="#inicio" class="navbar-logo" aria-label="Temperus Churrascaria — ir para o início">
+        <img src="uploads/logo-temperus.jpg" alt="Temperus Churrascaria">
+      </a>
+      <div class="navbar-links">
+        <a href="#sobre" class="nav-link">Sobre Nós</a>
+        <a href="#cardapio" class="nav-link">Cardápio</a>
+        <a href="#contato" class="nav-link">Contato</a>
+        <button onClick="{{ goPedido }}" class="btn-pedir">Peça Agora</button>
+      </div>
+      <button class="navbar-toggle" onClick="{{ toggleMenu }}" aria-expanded="{{ menuAberto }}" aria-controls="nav-mobile" aria-label="Abrir menu">
+        <i class="{{ menuAberto ? 'bi bi-x-lg' : 'bi bi-list' }}"></i>
+      </button>
+    </div>
+    <div class="navbar-mobile {{ menuAberto ? 'aberto' : '' }}" id="nav-mobile">
+      <a href="#sobre" class="nav-link" onClick="{{ fecharMenu }}">Sobre Nós</a>
+      <a href="#cardapio" class="nav-link" onClick="{{ fecharMenu }}">Cardápio</a>
+      <a href="#contato" class="nav-link" onClick="{{ fecharMenu }}">Contato</a>
+      <button onClick="{{ goPedido }}" class="btn-pedir">Peça Agora</button>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section id="inicio" class="secao-hero" aria-label="Apresentação">
+      <div class="hero-fundo" role="img" aria-label="Foto de churrasco da Temperus"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-conteudo">
+        <div class="hero-badge" role="note">
+          <i class="bi bi-star-fill" aria-hidden="true"></i>
+          Selo Super iFood 2025 · 4,9 estrelas · 322 avaliações
+        </div>
+        <h1 class="hero-titulo">
+          Temperus<br>
+          <span class="hero-titulo-destaque">Churrascaria</span>
+        </h1>
+        <p class="hero-subtitulo">
+          Almoço especial com sabor de churrasco.<br>
+          Marmitex caprichada com carnes selecionadas.
+        </p>
+        <div class="hero-acoes">
+          <button onClick="{{ goPedido }}" class="btn-pedir btn-pedir-lg">
+            <i class="bi bi-bag-fill" aria-hidden="true"></i>
+            Peça Agora
+          </button>
+          <a href="#cardapio" class="btn-ghost">
+            Ver Cardápio
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE NÓS -->
+    <section id="sobre" class="secao-sobre" aria-label="Sobre nós">
+      <div class="sobre-grid">
+        <div class="sobre-texto">
+          <p class="section-label">Sobre Nós</p>
+          <h2 class="section-heading" style="margin-bottom:24px">Uma tradição de<br>sabor em Palmas</h2>
+          <p>A Temperus Churrascaria é referência em Palmas-TO quando o assunto é almoço com sabor de churrasco. Nossos marmitex são preparados diariamente com carnes selecionadas, acompanhamentos frescos e todo o cuidado que você merece.</p>
+          <p style="margin-bottom:40px">Atendemos em dois endereços no Plano Diretor Sul, e também pelo iFood e WhatsApp. Você escolhe como receber o seu almoço especial!</p>
+
+          <div class="card-horario" role="region" aria-label="Horário de funcionamento">
+            <div class="card-horario-cabecalho">
+              <span class="indicador-online" aria-hidden="true"></span>
+              <span class="card-horario-titulo">Horário de Funcionamento</span>
+            </div>
+            <div class="card-horario-linha">
+              <span class="card-horario-dia">Terça a Domingo</span>
+              <time class="card-horario-hora" datetime="10:30/14:15">10:30 — 14:15</time>
+            </div>
+            <p class="card-horario-fechado">
+              <i class="bi bi-x-circle-fill" aria-hidden="true"></i>
+              Fechado às segundas-feiras
+            </p>
+          </div>
+        </div>
+
+        <div class="d-flex flex-column gap-3">
+          <article class="card-avaliacao" aria-label="Avaliação iFood">
+            <p class="avaliacao-label">Avaliação iFood</p>
+            <p class="avaliacao-nota">4,9</p>
+            <div class="avaliacao-estrelas" aria-label="5 estrelas">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </div>
+            <p class="avaliacao-contagem">322 avaliações de clientes</p>
+            <span class="avaliacao-selo">
+              <i class="bi bi-award-fill" aria-hidden="true"></i>
+              SUPER RESTAURANTE 2025
+            </span>
+          </article>
+
+          <div class="servicos-grid">
+            <div class="card-servico">
+              <i class="bi bi-truck card-servico-icone" aria-hidden="true"></i>
+              <span class="card-servico-nome">Delivery</span>
+            </div>
+            <div class="card-servico">
+              <i class="bi bi-shop card-servico-icone" aria-hidden="true"></i>
+              <span class="card-servico-nome">Presencial</span>
+            </div>
+            <div class="card-servico">
+              <i class="bi bi-whatsapp card-servico-icone" aria-hidden="true"></i>
+              <span class="card-servico-nome">WhatsApp</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARDÁPIO -->
+    <section id="cardapio" class="secao-cardapio" aria-label="Cardápio">
+      <div class="cardapio-inner">
+        <header class="cardapio-cabecalho">
+          <p class="section-label">O que servimos</p>
+          <h2 class="section-heading">Nosso Cardápio</h2>
+        </header>
+
+        <div class="tab-switcher" role="tablist" aria-label="Categorias do cardápio">
+          <button onClick="{{ setMenuMarmita }}" class="{{ marmitaTabSty }}" role="tab" aria-selected="{{ isMarmitaTab }}">
+            <i class="bi bi-bag-fill" aria-hidden="true"></i> Marmitex
+          </button>
+          <button onClick="{{ setMenuBebidas }}" class="{{ bebidasTabSty }}" role="tab" aria-selected="{{ isBebidasTab }}">
+            <i class="bi bi-cup-straw" aria-hidden="true"></i> Bebidas
+          </button>
+          <button onClick="{{ setMenuSucos }}" class="{{ sucosTabSty }}" role="tab" aria-selected="{{ isSucosTab }}">
+            <i class="bi bi-cup-hot" aria-hidden="true"></i> Sucos
+          </button>
+        </div>
+
+        <!-- Marmita -->
+        <sc-if value="{{ isMarmitaTab }}" hint-placeholder-val="{{ true }}">
+          <article class="card-marmita" aria-label="Marmitex Padrão">
+            <div class="card-marmita-foto">
+              <img src="uploads/pasted-1782497612284-0.png" alt="Marmitex Temperus Churrascaria">
+              <div class="card-marmita-foto-overlay" aria-hidden="true"></div>
+            </div>
+            <div class="card-marmita-info">
+              <div>
+                <h3 class="card-marmita-nome">Marmitex Padrão</h3>
+                <p class="card-marmita-desc">Aproximadamente 700g · Farto e caprichado</p>
+              </div>
+              <p class="card-marmita-preco">R$ 32,50</p>
+            </div>
+            <div class="card-marmita-corpo">
+              <div class="chips-secao">
+                <p class="chips-titulo">Incluso em todo marmitex</p>
+                <div class="chips-grupo">
+                  <span class="chip">Arroz</span>
+                  <span class="chip">Feijão</span>
+                  <span class="chip">Macarrão</span>
+                  <span class="chip">Tropeiro</span>
+                  <span class="chip">Saladas variadas</span>
+                </div>
+              </div>
+              <div class="chips-secao">
+                <p class="chips-titulo">Escolha 2 tipos de carne</p>
+                <div class="chips-grupo">
+                  <span class="chip chip-vermelho"><i class="bi bi-fire" aria-hidden="true"></i> Churrasco</span>
+                  <span class="chip chip-vermelho"><i class="bi bi-fire" aria-hidden="true"></i> Carne com molho</span>
+                  <span class="chip chip-vermelho"><i class="bi bi-fire" aria-hidden="true"></i> Frango com molho</span>
+                  <span class="chip chip-vermelho"><i class="bi bi-egg-fried" aria-hidden="true"></i> Omelete</span>
+                  <span class="chip chip-vermelho"><i class="bi bi-fire" aria-hidden="true"></i> Frango Assado</span>
+                </div>
+              </div>
+              <div class="chips-secao">
+                <p class="chips-titulo">1 Guarnição (opcional)</p>
+                <div class="chips-grupo">
+                  <span class="chip chip-verde">Salpicão</span>
+                  <span class="chip chip-verde">Maionese</span>
+                  <span class="chip chip-verde">Purê de Batata</span>
+                  <span class="chip">Sem guarnição</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </sc-if>
+
+        <!-- Bebidas -->
+        <sc-if value="{{ isBebidasTab }}" hint-placeholder-val="{{ false }}">
+          <div class="grid-bebidas" role="list">
+            <article class="card-produto" role="listitem">
+              <image-slot id="bev-coca" style="width:100%;height:140px" shape="rect" placeholder="Foto Coca-Cola"></image-slot>
+              <div class="card-produto-corpo">
+                <p class="produto-nome">Coca-Cola</p>
+                <p class="produto-desc">Lata 300ml</p>
+                <p class="produto-preco">R$ 9,00</p>
+              </div>
+            </article>
+            <article class="card-produto" role="listitem">
+              <image-slot id="bev-fanta" style="width:100%;height:140px" shape="rect" placeholder="Foto Fanta Laranja"></image-slot>
+              <div class="card-produto-corpo">
+                <p class="produto-nome">Fanta Laranja</p>
+                <p class="produto-desc">Lata 350ml</p>
+                <p class="produto-preco">R$ 9,00</p>
+              </div>
+            </article>
+            <article class="card-produto" role="listitem">
+              <image-slot id="bev-guarana" style="width:100%;height:140px" shape="rect" placeholder="Foto Guaraná"></image-slot>
+              <div class="card-produto-corpo">
+                <p class="produto-nome">Guaraná Antarctica</p>
+                <p class="produto-desc">Lata 350ml</p>
+                <p class="produto-preco">R$ 9,00</p>
+              </div>
+            </article>
+            <article class="card-produto" role="listitem">
+              <image-slot id="bev-sprite" style="width:100%;height:140px" shape="rect" placeholder="Foto Sprite"></image-slot>
+              <div class="card-produto-corpo">
+                <p class="produto-nome">Sprite</p>
+                <p class="produto-desc">Lata 310ml</p>
+                <p class="produto-preco">R$ 9,00</p>
+              </div>
+            </article>
+            <article class="card-produto" role="listitem">
+              <image-slot id="bev-agua-s" style="width:100%;height:140px" shape="rect" placeholder="Foto Água Sem Gás"></image-slot>
+              <div class="card-produto-corpo">
+                <p class="produto-nome">Água Sem Gás</p>
+                <p class="produto-desc">Crystal 500ml</p>
+                <p class="produto-preco">R$ 7,00</p>
+              </div>
+            </article>
+            <article class="card-produto" role="listitem">
+              <image-slot id="bev-agua-c" style="width:100%;height:140px" shape="rect" placeholder="Foto Água Com Gás"></image-slot>
+              <div class="card-produto-corpo">
+                <p class="produto-nome">Água Com Gás</p>
+                <p class="produto-desc">Crystal 500ml</p>
+                <p class="produto-preco">R$ 7,00</p>
+              </div>
+            </article>
+          </div>
+        </sc-if>
+
+        <!-- Sucos -->
+        <sc-if value="{{ isSucosTab }}" hint-placeholder-val="{{ false }}">
+          <div class="grid-bebidas" role="list">
+            <article class="card">
+              <image-slot id="juice-laranja" class="card-img-top" shape="rect" placeholder="Foto Laranja"></image-slot>
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </article>
+            <article class="card-produto" role="listitem">
+              <image-slot id="juice-laranja" style="width:100%;height:110px" shape="rect" placeholder="Foto Laranja"></image-slot>
+              <div class="card-produto-corpo">
+                <p class="produto-nome">Laranja</p>
+                <p class="produto-desc">Garrafa 500ml</p>
+                <p class="produto-preco">R$ 18,00</p>
+              </div>
+            </article>
+            <article class="card-produto" role="listitem">
+              <image-slot id="bev-fanta" style="width:100%;height:140px" shape="rect" placeholder="Foto Fanta Laranja"></image-slot>
+              <div class="card-produto-corpo">
+                <p class="produto-nome">Fanta Laranja</p>
+                <p class="produto-desc">Lata 350ml</p>
+                <p class="produto-preco">R$ 9,00</p>
+              </div>
+            </article>
+            <article class="card-produto" role="listitem">
+              <image-slot id="bev-guarana" style="width:100%;height:140px" shape="rect" placeholder="Foto Guaraná"></image-slot>
+              <div class="card-produto-corpo">
+                <p class="produto-nome">Guaraná Antarctica</p>
+                <p class="produto-desc">Lata 350ml</p>
+                <p class="produto-preco">R$ 9,00</p>
+              </div>
+            </article>
+            <article class="card-produto" role="listitem">
+              <image-slot id="bev-sprite" style="width:100%;height:140px" shape="rect" placeholder="Foto Sprite"></image-slot>
+              <div class="card-produto-corpo">
+                <p class="produto-nome">Sprite</p>
+                <p class="produto-desc">Lata 310ml</p>
+                <p class="produto-preco">R$ 9,00</p>
+              </div>
+            </article>
+            <article class="card-produto" role="listitem">
+              <image-slot id="bev-agua-s" style="width:100%;height:140px" shape="rect" placeholder="Foto Água Sem Gás"></image-slot>
+              <div class="card-produto-corpo">
+                <p class="produto-nome">Água Sem Gás</p>
+                <p class="produto-desc">Crystal 500ml</p>
+                <p class="produto-preco">R$ 7,00</p>
+              </div>
+            </article>
+            <article class="card-produto" role="listitem">
+              <image-slot id="bev-agua-c" style="width:100%;height:140px" shape="rect" placeholder="Foto Água Com Gás"></image-slot>
+              <div class="card-produto-corpo">
+                <p class="produto-nome">Água Com Gás</p>
+                <p class="produto-desc">Crystal 500ml</p>
+                <p class="produto-preco">R$ 7,00</p>
+              </div>
+            </article>
+          </div>
+        </sc-if>
+
+        <!-- Sucos -->
+        <sc-if value="{{ isSucosTab }}" hint-placeholder-val="{{ false }}">
+          <div>
+            <p class="nota-suco">500ml · R$ 18,00 cada</p>
+            <div class="grid-sucos" role="list">
+              <article class="card-produto" role="listitem">
+                <image-slot id="juice-laranja" style="width:100%;height:110px" shape="rect" placeholder="Foto Laranja"></image-slot>
+                <div class="card-produto-corpo"><p class="card-suco-nome">Laranja</p></div>
+              </article>
+              <article class="card-produto" role="listitem">
+                <image-slot id="juice-maracuja" style="width:100%;height:110px" shape="rect" placeholder="Foto Maracujá"></image-slot>
+                <div class="card-produto-corpo"><p class="card-suco-nome">Maracujá</p></div>
+              </article>
+              <article class="card-produto" role="listitem">
+                <image-slot id="juice-goiaba" style="width:100%;height:110px" shape="rect" placeholder="Foto Goiaba"></image-slot>
+                <div class="card-produto-corpo"><p class="card-suco-nome">Goiaba</p></div>
+              </article>
+              <article class="card-produto" role="listitem">
+                <image-slot id="juice-caju" style="width:100%;height:110px" shape="rect" placeholder="Foto Caju"></image-slot>
+                <div class="card-produto-corpo"><p class="card-suco-nome">Caju</p></div>
+              </article>
+              <article class="card-produto" role="listitem">
+                <image-slot id="juice-caja" style="width:100%;height:110px" shape="rect" placeholder="Foto Cajá"></image-slot>
+                <div class="card-produto-corpo"><p class="card-suco-nome">Cajá</p></div>
+              </article>
+              <article class="card-produto" role="listitem">
+                <image-slot id="juice-limao" style="width:100%;height:110px" shape="rect" placeholder="Foto Limão"></image-slot>
+                <div class="card-produto-corpo"><p class="card-suco-nome">Limão</p></div>
+              </article>
+              <article class="card-produto" role="listitem">
+                <image-slot id="juice-manga" style="width:100%;height:110px" shape="rect" placeholder="Foto Manga"></image-slot>
+                <div class="card-produto-corpo"><p class="card-suco-nome">Manga</p></div>
+              </article>
+              <article class="card-produto" role="listitem">
+                <image-slot id="juice-abacaxi" style="width:100%;height:110px" shape="rect" placeholder="Foto Abacaxi"></image-slot>
+                <div class="card-produto-corpo"><p class="card-suco-nome">Abacaxi</p></div>
+              </article>
+            </div>
+            <div class="text-center mt-4">
+              <button onClick="{{ goPedido }}" class="btn-pedir">
+                <i class="bi bi-bag-fill" aria-hidden="true"></i>
+                Pedir Agora
+              </button>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato" class="secao-contato" aria-label="Contato e endereços">
+      <div class="contato-inner">
+        <header class="contato-cabecalho">
+          <p class="section-label">Fale Conosco</p>
+          <h2 class="section-heading">Nossos Endereços</h2>
+        </header>
+
+        <div class="contato-acoes">
+          <a href="{{ whatsappUrl }}" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+            <i class="bi bi-whatsapp" aria-hidden="true"></i>
+            Chamar no WhatsApp
+          </a>
+          <a href="{{ ifoodUrl }}" target="_blank" rel="noopener noreferrer" class="btn-ifood">
+            <i class="bi bi-truck" aria-hidden="true"></i>
+            Pedir no iFood
+          </a>
+          <a href="{{ instagramUrl }}" target="_blank" rel="noopener noreferrer" class="btn-instagram">
+            <i class="bi bi-instagram" aria-hidden="true"></i>
+            Instagram
+          </a>
+          <button onClick="{{ goPedido }}" class="btn-pedir btn-pedir-lg">
+            <i class="bi bi-bag-fill" aria-hidden="true"></i>
+            Monte seu Pedido
+          </button>
+        </div>
+
+        <div class="enderecos-grid">
+          <a href="{{ mapsUrl1 }}" target="_blank" rel="noopener noreferrer" class="card-endereco" aria-label="Ver Unidade 602 Sul no Google Maps">
+            <div class="card-endereco-cabecalho">
+              <div class="card-endereco-icone" aria-hidden="true">
+                <i class="bi bi-geo-alt-fill"></i>
+              </div>
+              <span class="card-endereco-unidade">Unidade 602 Sul</span>
+            </div>
+            <address class="card-endereco-texto">
+              Q. 602 Sul Av. Joaquim Teotônio Segurado,<br>
+              Conj 01 Lote 14 — Plano Diretor Sul<br>
+              Palmas — TO, 77022-002
+            </address>
+            <span class="card-endereco-link">Ver no Google Maps <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+          </a>
+          <a href="{{ mapsUrl2 }}" target="_blank" rel="noopener noreferrer" class="card-endereco" aria-label="Ver Unidade 1206 Sul no Google Maps">
+            <div class="card-endereco-cabecalho">
+              <div class="card-endereco-icone" aria-hidden="true">
+                <i class="bi bi-geo-alt-fill"></i>
+              </div>
+              <span class="card-endereco-unidade">Unidade 1206 Sul</span>
+            </div>
+            <address class="card-endereco-texto">
+              Q. 1206 Sul Alameda 2, 2<br>
+              Plano Diretor Sul<br>
+              Palmas — TO, 77024-468
+            </address>
+            <span class="card-endereco-link">Ver no Google Maps <i class="bi bi-arrow-right" aria-hidden="true"></i></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <img src="uploads/logo-temperus.jpg" class="footer-logo" alt="Temperus Churrascaria">
+    <p class="footer-copy">© 2025 Temperus Churrascaria · Palmas, Tocantins</p>
+    <p class="footer-horario">Terça a Domingo · 10:30 às 14:15</p>
+  </footer>
+
+</sc-if>
+
+<!-- ========== PEDIDO ========== -->
+<sc-if value="{{ showPedido }}" hint-placeholder-val="{{ false }}">
+  <div class="pedido-pagina">
+
+    <header class="pedido-cabecalho">
+      <button onClick="{{ goHome }}" class="btn-back" aria-label="Voltar para a página inicial">
+        <i class="bi bi-arrow-left" aria-hidden="true"></i>
+        Voltar
+      </button>
+      <div>
+        <p class="pedido-titulo">Fazer Pedido</p>
+        <p class="pedido-subtitulo">Monte seu pedido e envie pelo WhatsApp</p>
+      </div>
+    </header>
+
+    <main class="pedido-corpo" aria-label="Formulário de pedido">
+
+      <!-- Nome -->
+      <div class="campo">
+        <label for="campo-nome" class="campo-label">Seu nome</label>
+        <input
+          id="campo-nome"
+          type="text"
+          value="{{ custName }}"
+          onChange="{{ setName }}"
+          placeholder="Como devemos te chamar?"
+          class="campo-input"
+          autocomplete="given-name"
+        >
+        <sc-if value="{{ hasErrName }}" hint-placeholder-val="{{ false }}">
+          <p class="campo-erro" role="alert">{{ errName }}</p>
+        </sc-if>
+      </div>
+
+      <!-- Tipo de pedido -->
+      <div class="campo">
+        <span class="campo-label">O que você quer pedir?</span>
+        <div class="tipo-pedido-grupo" role="group" aria-label="Selecione o tipo de pedido">
+          <button onClick="{{ toggleMarmita }}" class="{{ marmitaBtnSty }}" aria-pressed="{{ hasMarmita }}">
+            <i class="bi bi-bag-fill btn-tipo-icone" aria-hidden="true"></i>
+            <span class="btn-tipo-nome">Marmitex</span>
+            <span class="btn-tipo-preco">R$ 32,50</span>
+          </button>
+          <button onClick="{{ toggleDrink }}" class="{{ drinkBtnSty }}" aria-pressed="{{ hasDrink }}">
+            <i class="bi bi-cup-straw btn-tipo-icone" aria-hidden="true"></i>
+            <span class="btn-tipo-nome">Bebida / Suco</span>
+            <span class="btn-tipo-preco">A partir de R$ 7,00</span>
+          </button>
+        </div>
+        <sc-if value="{{ hasErrType }}" hint-placeholder-val="{{ false }}">
+          <p class="campo-erro" role="alert">{{ errType }}</p>
+        </sc-if>
+      </div>
+
+      <!-- Opções da marmita -->
+      <sc-if value="{{ hasMarmita }}" hint-placeholder-val="{{ false }}">
+        <div class="bloco-selecao" role="region" aria-label="Escolha das carnes">
+          <p class="bloco-selecao-label">Marmitex Padrão · R$ 32,50</p>
+          <h2 class="bloco-selecao-titulo">Escolha suas carnes</h2>
+          <p class="contagem-carnes" aria-live="polite">{{ meatsCountStr }}</p>
+          <div class="lista-opcoes" role="group" aria-label="Tipos de carne">
+            <sc-for list="{{ meatList }}" as="meat" hint-placeholder-count="5">
+              <button onClick="{{ meat.toggle }}" class="{{ meat.btnSty }}">
+                <i class="bi bi-fire" aria-hidden="true"></i>
+                {{ meat.name }}
+              </button>
+            </sc-for>
+          </div>
+          <sc-if value="{{ hasErrMeats }}" hint-placeholder-val="{{ false }}">
+            <p class="campo-erro" role="alert" style="margin-bottom:14px">{{ errMeats }}</p>
+          </sc-if>
+          <p class="guarnicao-titulo">Guarnição</p>
+          <div class="guarnicoes-grupo" role="group" aria-label="Guarnições">
+            <sc-for list="{{ garnList }}" as="garn" hint-placeholder-count="3">
+              <button onClick="{{ garn.select }}" class="{{ garn.btnSty }}">{{ garn.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- Opções de bebida -->
+      <sc-if value="{{ hasDrink }}" hint-placeholder-val="{{ false }}">
+        <div class="bloco-selecao" role="region" aria-label="Escolha de bebidas">
+          <p class="bloco-selecao-label">Bebidas e Sucos</p>
+          <h2 class="bloco-selecao-titulo">Escolha sua bebida</h2>
+          <div class="tab-switcher-interno" role="tablist" aria-label="Categoria de bebida">
+            <button onClick="{{ setDrinkBevs }}" class="{{ drinkBevsTabSty }}" role="tab" aria-selected="{{ isDrinkBevs }}">
+              <i class="bi bi-cup-straw" aria-hidden="true"></i> Bebidas
+            </button>
+            <button onClick="{{ setDrinkJuices }}" class="{{ drinkJuicesTabSty }}" role="tab" aria-selected="{{ isDrinkJuices }}">
+              <i class="bi bi-cup-hot" aria-hidden="true"></i> Sucos Naturais
+            </button>
+          </div>
+
+          <sc-if value="{{ isDrinkBevs }}" hint-placeholder-val="{{ true }}">
+            <div class="lista-bebidas" role="list">
+              <sc-for list="{{ bevList }}" as="bev" hint-placeholder-count="6">
+                <button onClick="{{ bev.toggle }}" class="{{ bev.btnSty }}" role="listitem">
+                  <span class="fw-semibold">{{ bev.name }}</span>
+                  <span class="bebida-desc">{{ bev.desc }}</span>
+                  <span class="bebida-preco">{{ bev.priceStr }}</span>
+                </button>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ isDrinkJuices }}" hint-placeholder-val="{{ false }}">
+            <div>
+              <div class="grid-sucos-form" role="list">
+                <sc-for list="{{ juiceList }}" as="juice" hint-placeholder-count="8">
+                  <button onClick="{{ juice.toggle }}" class="{{ juice.btnSty }}" role="listitem">{{ juice.name }}</button>
+                </sc-for>
+              </div>
+              <p class="nota-sucos-preco">Todos os sucos 500ml · R$ 18,00</p>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ hasErrDrink }}" hint-placeholder-val="{{ false }}">
+            <p class="campo-erro" role="alert" style="margin-top:12px">{{ errDrink }}</p>
+          </sc-if>
+        </div>
+      </sc-if>
+
+      <!-- Total -->
+      <sc-if value="{{ hasItems }}" hint-placeholder-val="{{ false }}">
+        <div class="card-total" aria-live="polite">
+          <span class="total-label">Total estimado</span>
+          <span class="total-valor">{{ totalStr }}</span>
+        </div>
+      </sc-if>
+
+      <!-- Enviar -->
+      <button onClick="{{ sendOrder }}" class="btn-enviar">
+        <i class="bi bi-whatsapp" aria-hidden="true"></i>
+        Enviar Pedido pelo WhatsApp
+      </button>
+      <p class="nota-envio">
+        Você será redirecionado ao WhatsApp com seu pedido já formatado.<br>
+        Aguarde a confirmação da Temperus Churrascaria.
+      </p>
+
+    </main>
+  </div>
+</sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;556381150862&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Configurações&quot;}}">
+class Component extends DCLogic {
+  WA_PADRAO = '556381150862';
+
+  CARNES = ['Churrasco', 'Carne com molho', 'Frango com molho', 'Omelete', 'Frango Assado'];
+
+  BEBIDAS = [
+    { name: 'Coca-Cola',          desc: 'Lata 300ml',    price: 9 },
+    { name: 'Fanta Laranja',      desc: 'Lata 350ml',    price: 9 },
+    { name: 'Guaraná Antarctica', desc: 'Lata 350ml',    price: 9 },
+    { name: 'Sprite',             desc: 'Lata 310ml',    price: 9 },
+    { name: 'Água Sem Gás',       desc: 'Crystal 500ml', price: 7 },
+    { name: 'Água Com Gás',       desc: 'Crystal 500ml', price: 7 },
+  ];
+
+  SUCOS = ['Laranja', 'Maracujá', 'Goiaba', 'Caju', 'Cajá', 'Limão', 'Manga', 'Abacaxi'];
+
+  state = {
+    view: 'home',
+    menuAberto: false,
+    menuTab: 'marmita',
+    drinkFormTab: 'bebidas',
+    hasMarmita: false,
+    hasDrink: false,
+    custName: '',
+    meats: [],
+    garnish: 'nenhuma',
+    bev: '',
+    juice: '',
+    errors: {},
+  };
+
+  /**
+   * Alterna a seleção de uma carne no pedido.
+   * Limita a seleção a no máximo 2 carnes.
+   *
+   * @param {string} carne - Nome da carne a ser alternada
+   */
+  toggleMeat(carne) {
+    const atual = this.state.meats;
+    if (atual.includes(carne)) {
+      this.setState({ meats: atual.filter(x => x !== carne), errors: {} });
+    } else if (atual.length < 2) {
+      this.setState({ meats: [...atual, carne], errors: {} });
+    }
+  }
+
+  /**
+   * Calcula o valor total do pedido atual.
+   *
+   * @returns {number} Valor total em reais
+   */
+  getTotal() {
+    let total = 0;
+    if (this.state.hasMarmita) total += 32.5;
+    const bebida = this.BEBIDAS.find(b => b.name === this.state.bev);
+    if (bebida) total += bebida.price;
+    if (this.state.juice) total += 18;
+    return total;
+  }
+
+  /**
+   * Formata um número para o formato de moeda BRL.
+   *
+   * @param {number} valor - Valor numérico a formatar
+   * @returns {string} Valor formatado (ex: "R$ 32,50")
+   */
+  brl(valor) {
+    return 'R$ ' + valor.toFixed(2).replace('.', ',');
+  }
+
+  /**
+   * Valida os campos do formulário de pedido.
+   *
+   * @returns {Object} Mapa de erros por campo (vazio se válido)
+   */
+  validate() {
+    const s = this.state;
+    const erros = {};
+    if (!s.custName.trim()) erros.name = 'Por favor, informe seu nome.';
+    if (!s.hasMarmita && !s.hasDrink) erros.type = 'Selecione ao menos um item do cardápio.';
+    if (s.hasMarmita && s.meats.length !== 2) erros.meats = 'Escolha exatamente 2 tipos de carne.';
+    if (s.hasDrink && !s.bev && !s.juice) erros.drink = 'Escolha ao menos uma bebida ou suco.';
+    return erros;
+  }
+
+  /**
+   * Monta a mensagem do pedido e abre o WhatsApp.
+   * Executa a validação antes de redirecionar.
+   */
+  sendOrder() {
+    const erros = this.validate();
+    if (Object.keys(erros).length) { this.setState({ errors: erros }); return; }
+
+    const s = this.state;
+    const wa = this.props.whatsappNumber || this.WA_PADRAO;
+    const bebida = this.BEBIDAS.find(x => x.name === s.bev);
+    const guarnicaoLabel = { nenhuma: 'Sem guarnição', salpicao: 'Salpicão', maionese: 'Maionese', pure: 'Purê de Batata' }[s.garnish];
+
+    let msg = '*PEDIDO — TEMPERUS CHURRASCARIA*\n\n';
+    msg += '*Nome:* ' + s.custName + '\n\n';
+
+    if (s.hasMarmita) {
+      msg += '*MARMITEX PADRÃO* — ' + this.brl(32.5) + '\n';
+      msg += '   • Carnes: ' + s.meats.join(' e ') + '\n';
+      msg += '   • Guarnição: ' + guarnicaoLabel + '\n\n';
+    }
+
+    if (s.hasDrink) {
+      if (s.bev && bebida) msg += '*BEBIDA:* ' + s.bev + ' (' + bebida.desc + ') — ' + this.brl(bebida.price) + '\n';
+      if (s.juice)        msg += '*SUCO:* ' + s.juice + ' 500ml — ' + this.brl(18) + '\n';
+      msg += '\n';
+    }
+
+    msg += '*TOTAL: ' + this.brl(this.getTotal()) + '*\n\n_Aguardo confirmação!_';
+    window.open('https://wa.me/' + wa + '?text=' + encodeURIComponent(msg), '_blank');
+  }
+
+  classeTab(ativo) {
+    return 'btn-tab' + (ativo ? ' ativo' : '');
+  }
+
+  classeTipo(selecionado) {
+    return 'btn-tipo' + (selecionado ? ' selecionado' : '');
+  }
+
+  classeCarne(carne) {
+    const selecionado = this.state.meats.includes(carne);
+    const desabilitado = !selecionado && this.state.meats.length >= 2;
+    if (selecionado) return 'btn-opcao selecionado';
+    if (desabilitado) return 'btn-opcao desabilitado';
+    return 'btn-opcao';
+  }
+
+  classeGarnicao(id) {
+    return 'btn-guarnicao' + (this.state.garnish === id ? ' selecionado' : '');
+  }
+
+  classeBebida(nome) {
+    return 'btn-bebida' + (this.state.bev === nome ? ' selecionado' : '');
+  }
+
+  classeSuco(nome) {
+    return 'btn-suco' + (this.state.juice === nome ? ' selecionado' : '');
+  }
+
+  renderVals() {
+    const s = this.state;
+    const wa = this.props.whatsappNumber || this.WA_PADRAO;
+    const total = this.getTotal();
+
+    return {
+      showHome:   s.view === 'home',
+      showPedido: s.view === 'pedido',
+      goHome:     () => this.setState({ view: 'home' }),
+      goPedido:   () => this.setState({
+        view: 'pedido', errors: {}, meats: [], garnish: 'nenhuma',
+        bev: '', juice: '', hasMarmita: false, hasDrink: false,
+      }),
+
+      menuAberto:  s.menuAberto,
+      toggleMenu:  () => this.setState({ menuAberto: !s.menuAberto }),
+      fecharMenu:  () => this.setState({ menuAberto: false }),
+
+      whatsappUrl:  'https://wa.me/' + wa,
+      ifoodUrl:     'https://www.ifood.com.br/delivery/palmas-to/temperus-churrascaria-plano-diretor-sul/fadf251e-af2f-4f21-b707-04f5eea2ded9',
+      instagramUrl: 'https://www.instagram.com/churrascariatemperus',
+      mapsUrl1:     'https://www.google.com/maps/place/Temperus+Churrascaria/@-10.2197216,-48.3326456,17z/data=!3m1!4b1!4m6!3m5!1s0x933b3527c26d6739:0xd9a8d43f04607185!8m2!3d-10.2197216!4d-48.3326456!16s%2Fg%2F11fjwz_svr?entry=ttu&g_ep=EgoyMDI2MDYyMy4wIKXMDSoASAFQAw%3D%3D',
+      mapsUrl2:     'https://www.google.com/maps/place/Churrascaria+Temperus/@-10.2556053,-48.3229847,17z/data=!3m1!4b1!4m6!3m5!1s0x933b33f7cbb9b0a5:0x2ed87a4345cc7da3!8m2!3d-10.2556053!4d-48.3229847!16s%2Fg%2F11b6hsg5ct?entry=ttu&g_ep=EgoyMDI2MDYyMy4wIKXMDSoASAFQAw%3D%3D',
+
+      setMenuMarmita: () => this.setState({ menuTab: 'marmita' }),
+      setMenuBebidas: () => this.setState({ menuTab: 'bebidas' }),
+      setMenuSucos:   () => this.setState({ menuTab: 'sucos'   }),
+      isMarmitaTab:   s.menuTab === 'marmita',
+      isBebidasTab:   s.menuTab === 'bebidas',
+      isSucosTab:     s.menuTab === 'sucos',
+      marmitaTabSty:  this.classeTab(s.menuTab === 'marmita'),
+      bebidasTabSty:  this.classeTab(s.menuTab === 'bebidas'),
+      sucosTabSty:    this.classeTab(s.menuTab === 'sucos'),
+
+      hasMarmita:     s.hasMarmita,
+      hasDrink:       s.hasDrink,
+      toggleMarmita:  () => this.setState({ hasMarmita: !s.hasMarmita, errors: {} }),
+      toggleDrink:    () => this.setState({ hasDrink:   !s.hasDrink,   errors: {} }),
+      marmitaBtnSty:  this.classeTipo(s.hasMarmita),
+      drinkBtnSty:    this.classeTipo(s.hasDrink),
+
+      custName: s.custName,
+      setName:  (e) => this.setState({ custName: e.target.value, errors: {} }),
+
+      meatList: this.CARNES.map(carne => ({
+        name:   carne,
+        btnSty: this.classeCarne(carne),
+        toggle: () => this.toggleMeat(carne),
+      })),
+      meatsCountStr: s.meats.length + ' de 2 selecionadas',
+
+      garnList: [
+        { label: 'Salpicão',      btnSty: this.classeGarnicao('salpicao'), select: () => this.setState({ garnish: 'salpicao' }) },
+        { label: 'Maionese',      btnSty: this.classeGarnicao('maionese'), select: () => this.setState({ garnish: 'maionese' }) },
+        { label: 'Purê de Batata',btnSty: this.classeGarnicao('pure'),     select: () => this.setState({ garnish: 'pure'     }) },
+        { label: 'Sem guarnição', btnSty: this.classeGarnicao('nenhuma'),  select: () => this.setState({ garnish: 'nenhuma'  }) },
+      ],
+
+      setDrinkBevs:     () => this.setState({ drinkFormTab: 'bebidas' }),
+      setDrinkJuices:   () => this.setState({ drinkFormTab: 'sucos'   }),
+      isDrinkBevs:      s.drinkFormTab === 'bebidas',
+      isDrinkJuices:    s.drinkFormTab === 'sucos',
+      drinkBevsTabSty:  this.classeTab(s.drinkFormTab === 'bebidas'),
+      drinkJuicesTabSty: this.classeTab(s.drinkFormTab === 'sucos'),
+
+      bevList: this.BEBIDAS.map(b => ({
+        name:     b.name,
+        desc:     b.desc,
+        priceStr: this.brl(b.price),
+        btnSty:   this.classeBebida(b.name),
+        toggle:   () => this.setState({ bev: s.bev === b.name ? '' : b.name, errors: {} }),
+      })),
+
+      juiceList: this.SUCOS.map(j => ({
+        name:   j,
+        btnSty: this.classeSuco(j),
+        toggle: () => this.setState({ juice: s.juice === j ? '' : j, errors: {} }),
+      })),
+
+      totalStr: this.brl(total),
+      hasItems: total > 0,
+      sendOrder: () => this.sendOrder(),
+
+      errName:      s.errors.name  || '',
+      errType:      s.errors.type  || '',
+      errMeats:     s.errors.meats || '',
+      errDrink:     s.errors.drink || '',
+      hasErrName:   !!s.errors.name,
+      hasErrType:   !!s.errors.type,
+      hasErrMeats:  !!s.errors.meats,
+      hasErrDrink:  !!s.errors.drink,
+    };
+  }
+}
+</script>
+</body>
+</html>

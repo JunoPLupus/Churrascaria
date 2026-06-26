@@ -1,0 +1,1095 @@
+/* =============================================================
+   TEMPERUS CHURRASCARIA — Estilos Principais
+   Organizado por: base → layout → seções → componentes → responsivo
+   ============================================================= */
+
+/* ─── Variáveis ─────────────────────────────────────────────── */
+:root {
+  /* Fundos */
+  --c-bg:               #0C0C0C;
+  --c-bg-dark:          #080808;
+  --c-surface:          #141414;
+  --c-surface-2:        #1A1A1A;
+  --c-surface-3:        #0E0E0E;
+
+  /* Bordas */
+  --c-border:           #242424;
+  --c-border-2:         #2A2A2A;
+  --c-border-3:         #1E1E1E;
+
+  /* Primária */
+  --c-primary:          #C41E3A;
+  --c-primary-hover:    #E0223F;
+  --c-primary-alpha:    rgba(196, 30, 58, 0.10);
+  --c-primary-alpha-14: rgba(196, 30, 58, 0.14);
+  --c-primary-alpha-15: rgba(196, 30, 58, 0.15);
+  --c-primary-alpha-36: rgba(196, 30, 58, 0.36);
+  --c-primary-border:   rgba(196, 30, 58, 0.22);
+  --c-primary-shadow:   rgba(196, 30, 58, 0.40);
+
+  /* Texto */
+  --c-text:             #F2EDE8;
+  --c-text-muted:       #8A7E74;
+  --c-text-sub:         #B0A49A;
+  --c-text-dim:         #504848;
+  --c-text-dark:        #4A4040;
+  --c-text-faint:       #3A3030;
+
+  /* Destaques */
+  --c-accent:           #E07080;
+  --c-accent-dark:      #CC7080;
+  --c-accent-strong:    #E87080;
+
+  /* Status */
+  --c-online:           #2D6A2F;
+  --c-green-text:       #6DAF70;
+  --c-green-bg:         rgba(45, 106, 47, 0.12);
+  --c-green-border:     rgba(45, 106, 47, 0.25);
+
+  /* Marcas */
+  --c-whatsapp:         #25D366;
+  --c-whatsapp-hover:   #1DB954;
+  --c-ifood:            #EA1D2C;
+  --c-ifood-hover:      #D01828;
+  --c-instagram:        #E1306C;
+  --c-instagram-hover:  #C82761;
+
+  /* Tipografia */
+  --font-display:       'Playfair Display', serif;
+  --font-body:          'Inter', sans-serif;
+
+  /* Layout */
+  --nav-height:         72px;
+
+  /* Raios */
+  --r-sm:               10px;
+  --r-md:               14px;
+  --r-lg:               18px;
+  --r-xl:               20px;
+  --r-pill:             32px;
+  --r-badge:            20px;
+}
+
+/* ─── Reset & Base ───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-height);
+}
+
+body {
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { text-decoration: none; color: inherit; }
+
+input:focus { border-color: var(--c-primary) !important; outline: none; }
+input::placeholder { color: var(--c-text-dark); }
+
+/* ─── Navbar ─────────────────────────────────────────────────── */
+.navbar-site {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  background: rgba(8, 8, 8, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid #1C1C1C;
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--nav-height);
+  padding: 0 48px;
+}
+
+.navbar-logo img {
+  height: 46px;
+  border-radius: 6px;
+  object-fit: contain;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-link {
+  color: var(--c-text-muted);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-link:hover { color: var(--c-text); }
+
+.navbar-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--c-text);
+  font-size: 22px;
+  cursor: pointer;
+  padding: 6px 8px;
+  line-height: 1;
+}
+
+.navbar-mobile {
+  display: none;
+  flex-direction: column;
+  padding: 8px 48px 20px;
+  background: rgba(8, 8, 8, 0.98);
+  border-top: 1px solid #1C1C1C;
+  gap: 0;
+}
+
+.navbar-mobile.aberto { display: flex; }
+
+.navbar-mobile .nav-link {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--c-border-3);
+  font-size: 15px;
+}
+
+.navbar-mobile .btn-pedir {
+  margin-top: 16px;
+  justify-content: center;
+}
+
+/* ─── Botões ─────────────────────────────────────────────────── */
+.btn-pedir {
+  background: var(--c-primary);
+  color: #fff;
+  border: none;
+  padding: 10px 26px;
+  border-radius: var(--r-pill);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: background 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-pedir:hover { background: var(--c-primary-hover); }
+
+.btn-pedir-lg {
+  padding: 16px 44px;
+  font-size: 16px;
+  font-weight: 700;
+  box-shadow: 0 8px 32px var(--c-primary-shadow);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--c-text);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 16px 36px;
+  border-radius: var(--r-pill);
+  font-size: 16px;
+  font-weight: 500;
+  backdrop-filter: blur(6px);
+  transition: background 0.2s;
+}
+
+.btn-ghost:hover { background: rgba(255, 255, 255, 0.13); }
+
+.btn-back {
+  background: var(--c-surface-2);
+  border: 1px solid #2E2E2E;
+  color: var(--c-text-sub);
+  padding: 9px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  transition: background 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-back:hover { background: #222; }
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--c-whatsapp);
+  color: #fff;
+  padding: 14px 30px;
+  border-radius: var(--r-pill);
+  font-size: 15px;
+  font-weight: 600;
+  font-family: var(--font-body);
+  transition: background 0.2s;
+}
+
+.btn-whatsapp:hover { background: var(--c-whatsapp-hover); color: #fff; }
+
+.btn-ifood {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--c-ifood);
+  color: #fff;
+  padding: 14px 30px;
+  border-radius: var(--r-pill);
+  font-size: 15px;
+  font-weight: 600;
+  font-family: var(--font-body);
+  transition: background 0.2s;
+}
+
+.btn-ifood:hover { background: var(--c-ifood-hover); color: #fff; }
+
+.btn-instagram {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--c-instagram);
+  color: #fff;
+  padding: 14px 30px;
+  border-radius: var(--r-pill);
+  font-size: 15px;
+  font-weight: 600;
+  font-family: var(--font-body);
+  transition: background 0.2s;
+}
+
+.btn-instagram:hover { background: var(--c-instagram-hover); color: #fff; }
+
+.btn-enviar {
+  width: 100%;
+  background: var(--c-whatsapp);
+  color: #fff;
+  border: none;
+  padding: 18px 32px;
+  border-radius: var(--r-md);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--font-body);
+  letter-spacing: 0.4px;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-enviar:hover { background: var(--c-whatsapp-hover); }
+
+/* ─── Utilitários de seção ───────────────────────────────────── */
+.section-label {
+  color: var(--c-primary);
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.section-heading {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--c-text);
+  line-height: 1.15;
+}
+
+/* ─── Hero ───────────────────────────────────────────────────── */
+.secao-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: var(--nav-height);
+}
+
+.hero-fundo {
+  position: absolute;
+  inset: 0;
+  background-image: url('../uploads/pasted-1782497612284-0.png');
+  background-size: cover;
+  background-position: center top;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(8,8,8,0.90) 0%, rgba(8,8,8,0.50) 45%, rgba(8,8,8,0.80) 100%);
+}
+
+.hero-conteudo {
+  position: relative;
+  text-align: center;
+  padding: 64px 24px;
+  max-width: 760px;
+  width: 100%;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--c-primary-alpha-14);
+  border: 1px solid var(--c-primary-alpha-36);
+  border-radius: var(--r-badge);
+  padding: 7px 20px;
+  font-size: 12px;
+  color: var(--c-accent);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  font-weight: 600;
+}
+
+.hero-titulo {
+  font-family: var(--font-display);
+  font-size: clamp(54px, 9.5vw, 104px);
+  font-weight: 900;
+  color: var(--c-text);
+  line-height: 1.0;
+  margin-bottom: 20px;
+  text-shadow: 0 6px 32px rgba(0, 0, 0, 0.6);
+}
+
+.hero-titulo-destaque { color: var(--c-primary); font-style: italic; }
+
+.hero-subtitulo {
+  font-size: 18px;
+  color: #B8AFA6;
+  line-height: 1.72;
+  margin-bottom: 44px;
+  font-weight: 300;
+}
+
+.hero-acoes {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ─── Seção Sobre ────────────────────────────────────────────── */
+.secao-sobre {
+  padding: 100px 48px;
+  background: var(--c-bg);
+}
+
+.sobre-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr));
+  gap: 72px;
+  align-items: start;
+}
+
+.sobre-texto p {
+  color: var(--c-text-muted);
+  line-height: 1.85;
+  font-size: 15px;
+  margin-bottom: 18px;
+}
+
+.card-horario {
+  background: var(--c-surface);
+  border-radius: var(--r-md);
+  padding: 24px 28px;
+  border: 1px solid var(--c-border);
+}
+
+.card-horario-cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.indicador-online {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c-online);
+  flex-shrink: 0;
+}
+
+.card-horario-titulo {
+  color: var(--c-primary);
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.card-horario-linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--c-border-3);
+  gap: 12px;
+}
+
+.card-horario-dia { color: var(--c-text); font-size: 15px; font-weight: 500; }
+
+.card-horario-hora {
+  color: var(--c-accent);
+  font-weight: 700;
+  font-size: 17px;
+  font-family: var(--font-display);
+  white-space: nowrap;
+}
+
+.card-horario-fechado {
+  margin-top: 12px;
+  color: var(--c-text-dim);
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Card de avaliação */
+.card-avaliacao {
+  background: linear-gradient(135deg, #180a0a 0%, #110404 100%);
+  border: 1px solid #2E1212;
+  border-radius: var(--r-lg);
+  padding: 36px;
+  text-align: center;
+}
+
+.avaliacao-label {
+  font-size: 13px;
+  color: #7A6060;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.avaliacao-nota {
+  font-family: var(--font-display);
+  font-size: 78px;
+  font-weight: 900;
+  color: var(--c-text);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.avaliacao-estrelas {
+  color: var(--c-primary);
+  font-size: 22px;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+
+.avaliacao-contagem { color: #6A5858; font-size: 13px; margin-bottom: 22px; }
+
+.avaliacao-selo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--c-primary);
+  color: #fff;
+  padding: 8px 28px;
+  border-radius: var(--r-badge);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Cards de serviço */
+.servicos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+
+.card-servico {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+  padding: 18px 10px;
+  text-align: center;
+}
+
+.card-servico-icone {
+  font-size: 22px;
+  margin-bottom: 8px;
+  color: var(--c-text-muted);
+  display: block;
+}
+
+.card-servico-nome { color: var(--c-text); font-size: 12px; font-weight: 600; }
+
+/* ─── Seção Cardápio ─────────────────────────────────────────── */
+.secao-cardapio { padding: 100px 48px; background: var(--c-bg-dark); }
+
+.cardapio-inner { max-width: 940px; margin: 0 auto; }
+
+.cardapio-cabecalho { text-align: center; margin-bottom: 52px; }
+
+/* Tabs */
+.tab-switcher {
+  display: flex;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+  padding: 4px;
+  gap: 4px;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+
+.btn-tab {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: #7A6E66;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: var(--font-body);
+  transition: all 0.15s;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-tab.ativo {
+  background: var(--c-primary);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Card Marmita */
+.card-marmita {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+}
+
+.card-marmita-foto { position: relative; height: 260px; overflow: hidden; }
+
+.card-marmita-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card-marmita-foto-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba(20,20,20,0.85) 100%);
+}
+
+.card-marmita-info {
+  background: linear-gradient(135deg, var(--c-primary) 0%, #8B0000 100%);
+  padding: 32px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.card-marmita-nome {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.card-marmita-desc { color: rgba(255,255,255,0.72); font-size: 14px; }
+
+.card-marmita-preco {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 900;
+  color: #fff;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.card-marmita-corpo { padding: 36px 40px; }
+
+/* Chips/tags */
+.chips-secao { margin-bottom: 28px; }
+
+.chips-titulo {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  font-weight: 600;
+  color: var(--c-text-dim);
+}
+
+.chips-grupo { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.chip {
+  background: #1E1E1E;
+  color: #A89E94;
+  padding: 6px 14px;
+  border-radius: var(--r-badge);
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chip-vermelho {
+  background: var(--c-primary-alpha);
+  color: var(--c-accent-dark);
+  border: 1px solid var(--c-primary-border);
+}
+
+.chip-verde {
+  background: var(--c-green-bg);
+  color: var(--c-green-text);
+  border: 1px solid var(--c-green-border);
+}
+
+/* Grid bebidas/sucos */
+.grid-bebidas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+.grid-sucos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+
+.card-produto {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+
+.card-produto-corpo { padding: 16px; text-align: center; }
+
+.produto-nome { color: var(--c-text); font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+.produto-desc { color: #6A6060; font-size: 13px; margin-bottom: 10px; }
+.produto-preco { color: var(--c-primary); font-family: var(--font-display); font-size: 22px; font-weight: 700; }
+
+.nota-suco {
+  color: #6A6060;
+  font-size: 13px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.card-suco-nome { color: var(--c-text); font-weight: 600; font-size: 14px; }
+
+/* ─── Seção Contato ──────────────────────────────────────────── */
+.secao-contato { padding: 100px 48px; background: var(--c-bg); }
+
+.contato-inner { max-width: 1100px; margin: 0 auto; }
+
+.contato-cabecalho { text-align: center; margin-bottom: 52px; }
+
+.contato-acoes {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  margin-bottom: 56px;
+  flex-wrap: wrap;
+}
+
+.enderecos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 22px;
+}
+
+.card-endereco {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  padding: 32px;
+  display: block;
+  transition: border-color 0.2s;
+}
+
+.card-endereco:hover { border-color: var(--c-primary); }
+
+.card-endereco-cabecalho { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+
+.card-endereco-icone {
+  width: 42px;
+  height: 42px;
+  background: var(--c-primary-alpha);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--c-primary);
+  flex-shrink: 0;
+}
+
+.card-endereco-unidade {
+  color: var(--c-primary);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.card-endereco-texto {
+  color: var(--c-text-sub);
+  font-size: 14px;
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+
+.card-endereco-link { color: var(--c-primary); font-size: 13px; font-weight: 500; }
+
+/* ─── Footer ─────────────────────────────────────────────────── */
+.site-footer {
+  background: var(--c-bg-dark);
+  border-top: 1px solid #1A1A1A;
+  padding: 44px 48px;
+  text-align: center;
+}
+
+.footer-logo { height: 44px; border-radius: 6px; opacity: 0.80; margin-bottom: 16px; }
+.footer-copy { color: var(--c-text-dark); font-size: 13px; margin-bottom: 6px; }
+.footer-horario { color: var(--c-text-faint); font-size: 12px; }
+
+/* ─── Página de Pedido ───────────────────────────────────────── */
+.pedido-pagina {
+  background: var(--c-bg);
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+.pedido-cabecalho {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(8, 8, 8, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid #1C1C1C;
+  padding: 14px 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.pedido-titulo {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--c-text);
+}
+
+.pedido-subtitulo { color: #6A6060; font-size: 12px; margin-top: 2px; }
+
+.pedido-corpo { max-width: 640px; margin: 0 auto; padding: 40px 24px; }
+
+/* Campos do formulário */
+.campo { margin-bottom: 32px; }
+
+.campo-label {
+  display: block;
+  color: #8A8080;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.campo-input {
+  width: 100%;
+  background: var(--c-surface);
+  border: 1.5px solid var(--c-border-2);
+  border-radius: var(--r-sm);
+  padding: 14px 18px;
+  color: var(--c-text);
+  font-size: 15px;
+  font-family: var(--font-body);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.campo-erro { color: var(--c-accent); font-size: 13px; margin-top: 8px; }
+
+/* Botões de tipo de pedido */
+.tipo-pedido-grupo { display: flex; gap: 14px; }
+
+.btn-tipo {
+  flex: 1;
+  padding: 20px 16px;
+  border-radius: var(--r-md);
+  border: 2px solid var(--c-border-2);
+  background: var(--c-surface);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  transition: all 0.2s;
+}
+
+.btn-tipo-icone { font-size: 26px; color: var(--c-text-muted); }
+.btn-tipo-nome { font-size: 15px; font-weight: 600; color: var(--c-text); }
+.btn-tipo-preco { font-size: 12px; color: #6A6060; }
+
+.btn-tipo.selecionado {
+  border-color: var(--c-primary);
+  background: var(--c-primary-alpha);
+}
+
+/* Blocos de seleção (marmita/bebida) */
+.bloco-selecao {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 20px;
+}
+
+.bloco-selecao-label {
+  color: var(--c-primary);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.bloco-selecao-titulo {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--c-text);
+  margin-bottom: 20px;
+}
+
+.contagem-carnes { color: #6A6060; font-size: 12px; margin-bottom: 10px; }
+
+/* Botões de opção (carnes) */
+.lista-opcoes { display: flex; flex-direction: column; gap: 8px; margin-bottom: 26px; }
+
+.btn-opcao {
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: var(--r-sm);
+  border: 1.5px solid var(--c-border-2);
+  background: var(--c-surface-2);
+  color: #C0B4A8;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: var(--font-body);
+  transition: all 0.15s;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-opcao.selecionado {
+  border-color: var(--c-primary);
+  background: var(--c-primary-alpha-15);
+  color: var(--c-accent-strong);
+}
+
+.btn-opcao.desabilitado {
+  border-color: #1A1A1A;
+  background: var(--c-surface-3);
+  color: #333;
+  cursor: not-allowed;
+}
+
+/* Guarnições */
+.guarnicao-titulo { color: var(--c-text); font-size: 14px; font-weight: 600; margin-bottom: 12px; }
+
+.guarnicoes-grupo { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.btn-guarnicao {
+  padding: 9px 18px;
+  border-radius: var(--r-badge);
+  border: 1.5px solid var(--c-border-2);
+  background: var(--c-surface-2);
+  color: #9A8E84;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: var(--font-body);
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.btn-guarnicao.selecionado {
+  background: var(--c-primary);
+  color: #fff;
+  border-color: var(--c-primary);
+}
+
+/* Tab interna (bebidas/sucos) */
+.tab-switcher-interno {
+  display: flex;
+  background: var(--c-surface-3);
+  border-radius: var(--r-sm);
+  padding: 3px;
+  gap: 3px;
+  margin-bottom: 18px;
+  width: fit-content;
+}
+
+/* Lista de bebidas */
+.lista-bebidas { display: flex; flex-direction: column; gap: 8px; }
+
+.btn-bebida {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: var(--r-sm);
+  border: 1.5px solid var(--c-border-2);
+  background: var(--c-surface-2);
+  color: #C0B4A8;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: var(--font-body);
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+}
+
+.btn-bebida.selecionado {
+  border-color: var(--c-primary);
+  background: rgba(196, 30, 58, 0.13);
+  color: var(--c-accent-strong);
+}
+
+.bebida-preco {
+  margin-left: auto;
+  color: var(--c-primary);
+  font-weight: 700;
+  padding-left: 16px;
+}
+
+.bebida-desc { font-size: 12px; opacity: 0.5; margin-left: 4px; }
+
+/* Lista de sucos */
+.grid-sucos-form { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+
+.btn-suco {
+  width: 100%;
+  padding: 12px 10px;
+  border-radius: var(--r-sm);
+  border: 1.5px solid var(--c-border-2);
+  background: var(--c-surface-2);
+  color: #C0B4A8;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: var(--font-body);
+  transition: all 0.15s;
+  text-align: center;
+}
+
+.btn-suco.selecionado {
+  border-color: var(--c-primary);
+  background: rgba(196, 30, 58, 0.13);
+  color: var(--c-accent-strong);
+}
+
+.nota-sucos-preco { color: var(--c-text-dim); font-size: 12px; margin-top: 12px; }
+
+/* Total */
+.card-total {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total-label { color: #8A8080; font-size: 14px; }
+
+.total-valor {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--c-primary);
+}
+
+.nota-envio {
+  color: var(--c-text-dark);
+  font-size: 12px;
+  text-align: center;
+  margin-top: 14px;
+  line-height: 1.65;
+}
+
+/* ─── Responsividade ─────────────────────────────────────────── */
+@media (max-width: 992px) {
+  .grid-sucos { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .navbar-inner { padding: 0 24px; }
+  .navbar-links { display: none; }
+  .navbar-toggle { display: block; }
+  .navbar-mobile { padding: 8px 24px 20px; }
+
+  .secao-hero { }
+  .hero-titulo { font-size: clamp(40px, 12vw, 80px); }
+  .hero-subtitulo { font-size: 16px; }
+
+  .secao-sobre,
+  .secao-cardapio,
+  .secao-contato { padding: 64px 24px; }
+
+  .sobre-grid { gap: 40px; }
+  .card-marmita-info { flex-direction: column; gap: 12px; padding: 24px; }
+  .card-marmita-corpo { padding: 24px; }
+  .card-marmita-preco { text-align: left; }
+
+  .grid-bebidas { grid-template-columns: repeat(2, 1fr); }
+  .grid-sucos { grid-template-columns: repeat(2, 1fr); }
+
+  .contato-acoes { flex-direction: column; align-items: stretch; }
+  .btn-whatsapp,
+  .btn-ifood,
+  .btn-instagram { justify-content: center; }
+  .contato-acoes .btn-pedir { justify-content: center; }
+
+  .site-footer { padding: 40px 24px; }
+
+  .pedido-cabecalho { padding: 14px 20px; }
+  .pedido-corpo { padding: 24px 20px; }
+
+  .tab-switcher { overflow-x: auto; }
+  .btn-tab { padding: 8px 14px; font-size: 13px; }
+
+  .grid-sucos-form { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .grid-bebidas { grid-template-columns: 1fr; }
+  .section-heading { font-size: 32px; }
+  .avaliacao-nota { font-size: 60px; }
+  .servicos-grid { gap: 8px; }
+  .tipo-pedido-grupo { flex-direction: column; }
+  .btn-tipo { flex-direction: row; justify-content: flex-start; padding: 16px; }
+}
